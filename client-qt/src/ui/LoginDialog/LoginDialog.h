@@ -1,7 +1,7 @@
 #pragma once
 #include<QDialog>
 #include<QWidget>
-#include"ui/LoginDialog/LoginDialog_style.h"
+#include"LoginDialog/LoginDialog_style.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

@@ -1,4 +1,4 @@
-#include"ui/LoginDialog/LoginDialog.h"
+#include"LoginDialog/LoginDialog.h"
 #include"ui_LoginDialog.h"
 
 
@@ -64,6 +64,9 @@ void LoginDialog::initStyle()
 /// <summary>
 /// 26_2_2
 /// 初始化链接
+/// 
+/// 26_2_4
+/// 增加点击 登录按钮的逻辑
 /// </summary>
 void LoginDialog::initConnect()
 {
@@ -77,5 +80,8 @@ void LoginDialog::initConnect()
 		ui->lblStatus->clear();
 	});
 
+	connect(ui->btnLogin, &QPushButton::clicked, this, [this]() {
+		
+	});
 }
 

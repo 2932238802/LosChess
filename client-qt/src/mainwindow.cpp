@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget* parent):
 	initStyle();
 }
 
+
+
 /// <summary>
 /// 26_2_2
 /// 
@@ -23,6 +25,7 @@ MainWindow::~MainWindow()
 {
 	delete ui;
 }
+
 
 
 /// <summary>

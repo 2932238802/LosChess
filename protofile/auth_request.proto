@@ -1,0 +1,19 @@
+syntax = "proto3";
+package auth_request;
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;  
+}
+
+message RegisterRequest {
+    string email = 1;
+    string password = 2;
+    string re_password = 3;
+    string verify_code = 4;
+}
+
+message EmailCodeRequest {
+    string email = 1;
+}
+

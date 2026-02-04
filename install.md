@@ -1,5 +1,9 @@
 # 棋类自定义框架
 
+https://blog.csdn.net/Shivy_/article/details/121372908
+
+
+
 ## 项目结构
 ```tex
 BoardGamePlatform/
@@ -23,3 +27,58 @@ BoardGamePlatform/
 │   └── assets/           # 公共静态资源
 └── docs/                  # 项目文档
 ```
+
+
+
+## protobuf格式
+
+
+```json
+// 登录的请求
+{
+	"email" : "2932238802@qq.com",
+    "password" : 16731726319
+}
+
+// 注册的请求
+{	
+	"email" : "2932238802@qq.com",
+    "password" : 12313154151,
+    "re_password" : 1318131863619,
+    "verify_code" : 2342,
+}
+
+// 邮箱验证码
+{
+	"email" : "2932238802@qq.com"
+}
+
+
+// 登录的答复
+{
+	"code" : 200,
+    "message" : "登录成功!" // "注册成功"
+    "data" :{
+		"token" : "sda7d901d31hd01yd8shadh1gb",
+    	"avatar" : "default.png",
+    	"created_at" : "BJ 26_2_2:21:20",
+    	"username" : "LosAngelous",
+    }
+}
+{
+	"code" : 401(密码错误),  400(请求失败), 403(拒绝请求)
+    "message" : "",
+    "data" : None
+}
+```
+
+
+
+
+
+
+
+
+
+
+

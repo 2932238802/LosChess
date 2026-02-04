@@ -1,0 +1,30 @@
+syntax = "proto3";
+package auth_response;
+
+message userData {
+    string token = 1 ;
+    string avatar = 2;
+    string created_at = 3;
+    string username = 4;
+}
+
+message AuthResponse {
+    int32 code = 1;
+    string message = 2;
+    userData data = 3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
