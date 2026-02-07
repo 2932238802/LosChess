@@ -57,6 +57,10 @@ class AuthResponse;
 struct AuthResponseDefaultTypeInternal;
 extern AuthResponseDefaultTypeInternal _AuthResponse_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull AuthResponse_class_data_;
+class CodeResponse;
+struct CodeResponseDefaultTypeInternal;
+extern CodeResponseDefaultTypeInternal _CodeResponse_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull CodeResponse_class_data_;
 class userData;
 struct userDataDefaultTypeInternal;
 extern userDataDefaultTypeInternal _userData_default_instance_;
@@ -320,6 +324,225 @@ class userData final : public ::google::protobuf::Message
 extern const ::google::protobuf::internal::ClassDataFull userData_class_data_;
 // -------------------------------------------------------------------
 
+class CodeResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:auth_response.CodeResponse) */ {
+ public:
+  inline CodeResponse() : CodeResponse(nullptr) {}
+  ~CodeResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(CodeResponse* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(CodeResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR CodeResponse(::google::protobuf::internal::ConstantInitialized);
+
+  inline CodeResponse(const CodeResponse& from) : CodeResponse(nullptr, from) {}
+  inline CodeResponse(CodeResponse&& from) noexcept
+      : CodeResponse(nullptr, ::std::move(from)) {}
+  inline CodeResponse& operator=(const CodeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CodeResponse& operator=(CodeResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CodeResponse& default_instance() {
+    return *reinterpret_cast<const CodeResponse*>(
+        &_CodeResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 2;
+  friend void swap(CodeResponse& a, CodeResponse& b) { a.Swap(&b); }
+  inline void Swap(CodeResponse* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CodeResponse* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CodeResponse* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<CodeResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const CodeResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const CodeResponse& from) { CodeResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(CodeResponse* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "auth_response.CodeResponse"; }
+
+  explicit CodeResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  CodeResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const CodeResponse& from);
+  CodeResponse(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, CodeResponse&& from) noexcept
+      : CodeResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kMsgFieldNumber = 3,
+    kCodeFieldNumber = 1,
+    kVerifyCodeFieldNumber = 2,
+  };
+  // string msg = 3;
+  void clear_msg() ;
+  const ::std::string& msg() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_msg(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_msg();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_msg();
+  void set_allocated_msg(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_msg() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_msg(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_msg();
+
+  public:
+  // int32 code = 1;
+  void clear_code() ;
+  ::int32_t code() const;
+  void set_code(::int32_t value);
+
+  private:
+  ::int32_t _internal_code() const;
+  void _internal_set_code(::int32_t value);
+
+  public:
+  // int32 verify_code = 2;
+  void clear_verify_code() ;
+  ::int32_t verify_code() const;
+  void set_verify_code(::int32_t value);
+
+  private:
+  ::int32_t _internal_verify_code() const;
+  void _internal_set_verify_code(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:auth_response.CodeResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 3,
+                                   0, 38,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const CodeResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr msg_;
+    ::int32_t code_;
+    ::int32_t verify_code_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_auth_5fresponse_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull CodeResponse_class_data_;
+// -------------------------------------------------------------------
+
 class AuthResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:auth_response.AuthResponse) */ {
  public:
@@ -462,23 +685,23 @@ class AuthResponse final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kMessageFieldNumber = 2,
+    kMsgFieldNumber = 2,
     kDataFieldNumber = 3,
     kCodeFieldNumber = 1,
   };
-  // string message = 2;
-  void clear_message() ;
-  const ::std::string& message() const;
+  // string msg = 2;
+  void clear_msg() ;
+  const ::std::string& msg() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
-  void set_message(Arg_&& arg, Args_... args);
-  ::std::string* PROTOBUF_NONNULL mutable_message();
-  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_message();
-  void set_allocated_message(::std::string* PROTOBUF_NULLABLE value);
+  void set_msg(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_msg();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_msg();
+  void set_allocated_msg(::std::string* PROTOBUF_NULLABLE value);
 
   private:
-  const ::std::string& _internal_message() const;
-  PROTOBUF_ALWAYS_INLINE void _internal_set_message(const ::std::string& value);
-  ::std::string* PROTOBUF_NONNULL _internal_mutable_message();
+  const ::std::string& _internal_msg() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_msg(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_msg();
 
   public:
   // .auth_response.userData data = 3;
@@ -511,7 +734,7 @@ class AuthResponse final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   1, 42,
+                                   1, 38,
                                    2>
       _table_;
 
@@ -532,7 +755,7 @@ class AuthResponse final : public ::google::protobuf::Message
         const AuthResponse& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::google::protobuf::internal::ArenaStringPtr message_;
+    ::google::protobuf::internal::ArenaStringPtr msg_;
     ::auth_response::userData* PROTOBUF_NULLABLE data_;
     ::int32_t code_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -848,69 +1071,69 @@ inline void AuthResponse::_internal_set_code(::int32_t value) {
   _impl_.code_ = value;
 }
 
-// string message = 2;
-inline void AuthResponse::clear_message() {
+// string msg = 2;
+inline void AuthResponse::clear_msg() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.message_.ClearToEmpty();
+  _impl_.msg_.ClearToEmpty();
   ClearHasBit(_impl_._has_bits_[0],
                   0x00000001U);
 }
-inline const ::std::string& AuthResponse::message() const
+inline const ::std::string& AuthResponse::msg() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:auth_response.AuthResponse.message)
-  return _internal_message();
+  // @@protoc_insertion_point(field_get:auth_response.AuthResponse.msg)
+  return _internal_msg();
 }
 template <typename Arg_, typename... Args_>
-PROTOBUF_ALWAYS_INLINE void AuthResponse::set_message(Arg_&& arg, Args_... args) {
+PROTOBUF_ALWAYS_INLINE void AuthResponse::set_msg(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  _impl_.message_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:auth_response.AuthResponse.message)
+  _impl_.msg_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:auth_response.AuthResponse.msg)
 }
-inline ::std::string* PROTOBUF_NONNULL AuthResponse::mutable_message()
+inline ::std::string* PROTOBUF_NONNULL AuthResponse::mutable_msg()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  ::std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:auth_response.AuthResponse.message)
+  ::std::string* _s = _internal_mutable_msg();
+  // @@protoc_insertion_point(field_mutable:auth_response.AuthResponse.msg)
   return _s;
 }
-inline const ::std::string& AuthResponse::_internal_message() const {
+inline const ::std::string& AuthResponse::_internal_msg() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.message_.Get();
+  return _impl_.msg_.Get();
 }
-inline void AuthResponse::_internal_set_message(const ::std::string& value) {
+inline void AuthResponse::_internal_set_msg(const ::std::string& value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.message_.Set(value, GetArena());
+  _impl_.msg_.Set(value, GetArena());
 }
-inline ::std::string* PROTOBUF_NONNULL AuthResponse::_internal_mutable_message() {
+inline ::std::string* PROTOBUF_NONNULL AuthResponse::_internal_mutable_msg() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.message_.Mutable( GetArena());
+  return _impl_.msg_.Mutable( GetArena());
 }
-inline ::std::string* PROTOBUF_NULLABLE AuthResponse::release_message() {
+inline ::std::string* PROTOBUF_NULLABLE AuthResponse::release_msg() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:auth_response.AuthResponse.message)
+  // @@protoc_insertion_point(field_release:auth_response.AuthResponse.msg)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
   ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
-  auto* released = _impl_.message_.Release();
+  auto* released = _impl_.msg_.Release();
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
-    _impl_.message_.Set("", GetArena());
+    _impl_.msg_.Set("", GetArena());
   }
   return released;
 }
-inline void AuthResponse::set_allocated_message(::std::string* PROTOBUF_NULLABLE value) {
+inline void AuthResponse::set_allocated_msg(::std::string* PROTOBUF_NULLABLE value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (value != nullptr) {
     SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   } else {
     ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
   }
-  _impl_.message_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.message_.IsDefault()) {
-    _impl_.message_.Set("", GetArena());
+  _impl_.msg_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.msg_.IsDefault()) {
+    _impl_.msg_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:auth_response.AuthResponse.message)
+  // @@protoc_insertion_point(field_set_allocated:auth_response.AuthResponse.msg)
 }
 
 // .auth_response.userData data = 3;
@@ -1010,6 +1233,125 @@ inline void AuthResponse::set_allocated_data(::auth_response::userData* PROTOBUF
 
   _impl_.data_ = reinterpret_cast<::auth_response::userData*>(value);
   // @@protoc_insertion_point(field_set_allocated:auth_response.AuthResponse.data)
+}
+
+// -------------------------------------------------------------------
+
+// CodeResponse
+
+// int32 code = 1;
+inline void CodeResponse::clear_code() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.code_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline ::int32_t CodeResponse::code() const {
+  // @@protoc_insertion_point(field_get:auth_response.CodeResponse.code)
+  return _internal_code();
+}
+inline void CodeResponse::set_code(::int32_t value) {
+  _internal_set_code(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  // @@protoc_insertion_point(field_set:auth_response.CodeResponse.code)
+}
+inline ::int32_t CodeResponse::_internal_code() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.code_;
+}
+inline void CodeResponse::_internal_set_code(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.code_ = value;
+}
+
+// int32 verify_code = 2;
+inline void CodeResponse::clear_verify_code() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.verify_code_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline ::int32_t CodeResponse::verify_code() const {
+  // @@protoc_insertion_point(field_get:auth_response.CodeResponse.verify_code)
+  return _internal_verify_code();
+}
+inline void CodeResponse::set_verify_code(::int32_t value) {
+  _internal_set_verify_code(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  // @@protoc_insertion_point(field_set:auth_response.CodeResponse.verify_code)
+}
+inline ::int32_t CodeResponse::_internal_verify_code() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.verify_code_;
+}
+inline void CodeResponse::_internal_set_verify_code(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.verify_code_ = value;
+}
+
+// string msg = 3;
+inline void CodeResponse::clear_msg() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.msg_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline const ::std::string& CodeResponse::msg() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:auth_response.CodeResponse.msg)
+  return _internal_msg();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void CodeResponse::set_msg(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  _impl_.msg_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:auth_response.CodeResponse.msg)
+}
+inline ::std::string* PROTOBUF_NONNULL CodeResponse::mutable_msg()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  ::std::string* _s = _internal_mutable_msg();
+  // @@protoc_insertion_point(field_mutable:auth_response.CodeResponse.msg)
+  return _s;
+}
+inline const ::std::string& CodeResponse::_internal_msg() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.msg_.Get();
+}
+inline void CodeResponse::_internal_set_msg(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.msg_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL CodeResponse::_internal_mutable_msg() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.msg_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE CodeResponse::release_msg() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:auth_response.CodeResponse.msg)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  auto* released = _impl_.msg_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.msg_.Set("", GetArena());
+  }
+  return released;
+}
+inline void CodeResponse::set_allocated_msg(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  }
+  _impl_.msg_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.msg_.IsDefault()) {
+    _impl_.msg_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:auth_response.CodeResponse.msg)
 }
 
 #ifdef __GNUC__

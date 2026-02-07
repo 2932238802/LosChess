@@ -1,10 +1,15 @@
 #pragma once
 #include<QDialog>
 #include<QWidget>
+#include<QPushButton>
 
 #include"net/LoginRequest.h"
-#include"LoginDialog/LoginDialog_style.h"
+#include"net/RegisterRequest.h"
+#include"net/EmailRequest.h"
 #include"net/NetManage.h"
+#include"LoginDialog/LoginDialog_style.h"
+#include"common/logger.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -12,6 +17,11 @@ namespace Ui {
 }
 QT_END_NAMESPACE
 
+/// <summary>
+/// 2_26_4
+/// ´´½¨µÇÂ¼ µ¯´°
+/// 
+/// </summary>
 class LoginDialog : public QDialog{
 	Q_OBJECT
 
@@ -21,6 +31,7 @@ public:
 
 private slots:
 	void onBtnLoginClicked();
+	void onBtnSendCodeClicked();
 	void onBtnCreateClicked();
 
 private:

@@ -61,21 +61,21 @@
        <item>
         <widget class="QLabel" name="label_user_login">
          <property name="text">
-          <string>Username</string>
+          <string>邮箱</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="editUsername">
+        <widget class="QLineEdit" name="editEmail">
          <property name="placeholderText">
-          <string>Enter account</string>
+          <string>输入邮箱......</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_pwd_login">
          <property name="text">
-          <string>Password</string>
+          <string>密码</string>
          </property>
         </widget>
        </item>
@@ -85,7 +85,7 @@
           <enum>QLineEdit::EchoMode::Password</enum>
          </property>
          <property name="placeholderText">
-          <string>Enter password</string>
+          <string>输入密码......</string>
          </property>
         </widget>
        </item>
@@ -138,21 +138,21 @@
        <item>
         <widget class="QLabel" name="label_user_reg">
          <property name="text">
-          <string>New Username</string>
+          <string>邮箱</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="editRegUsername">
+        <widget class="QLineEdit" name="editRegEmail">
          <property name="placeholderText">
-          <string>Pick a unique name</string>
+          <string>输入邮箱......</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_pwd_reg">
          <property name="text">
-          <string>Password</string>
+          <string>密码</string>
          </property>
         </widget>
        </item>
@@ -162,17 +162,32 @@
           <enum>QLineEdit::EchoMode::Password</enum>
          </property>
          <property name="placeholderText">
-          <string>At least 6 characters</string>
+          <string>输入密码......</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QWidget" name="confiemContain" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QLabel" name="labelRegPassword">
-            <property name="text">
-             <string>Confirm Password</string>
+           <widget class="QLineEdit" name="editVerifyCode">
+            <property name="echoMode">
+             <enum>QLineEdit::EchoMode::Password</enum>
+            </property>
+            <property name="placeholderText">
+             <string>输入邮箱验证码......</string>
             </property>
            </widget>
           </item>
@@ -192,7 +207,7 @@
           <enum>QLineEdit::EchoMode::Password</enum>
          </property>
          <property name="placeholderText">
-          <string>Repeat password</string>
+          <string>再次输入密码......</string>
          </property>
         </widget>
        </item>

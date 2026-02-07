@@ -38,9 +38,7 @@ inline constexpr RegisterRequest::Impl_::Impl_(
         re_password_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        verify_code_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()) {}
+        verify_code_{0} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR RegisterRequest::RegisterRequest(::_pbi::ConstantInitialized)
@@ -168,7 +166,7 @@ const char descriptor_table_protodef_auth_5frequest_2eproto[] ABSL_ATTRIBUTE_SEC
     "ginRequest\022\r\n\005email\030\001 \001(\t\022\020\n\010password\030\002 "
     "\001(\t\"\\\n\017RegisterRequest\022\r\n\005email\030\001 \001(\t\022\020\n"
     "\010password\030\002 \001(\t\022\023\n\013re_password\030\003 \001(\t\022\023\n\013"
-    "verify_code\030\004 \001(\t\"!\n\020EmailCodeRequest\022\r\n"
+    "verify_code\030\004 \001(\005\"!\n\020EmailCodeRequest\022\r\n"
     "\005email\030\001 \001(\tb\006proto3"
 };
 static ::absl::once_flag descriptor_table_auth_5frequest_2eproto_once;
@@ -536,8 +534,7 @@ PROTOBUF_NDEBUG_INLINE RegisterRequest::Impl_::Impl_(
         _cached_size_{0},
         email_(arena, from.email_),
         password_(arena, from.password_),
-        re_password_(arena, from.re_password_),
-        verify_code_(arena, from.verify_code_) {}
+        re_password_(arena, from.re_password_) {}
 
 RegisterRequest::RegisterRequest(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
@@ -552,6 +549,7 @@ RegisterRequest::RegisterRequest(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.verify_code_ = from._impl_.verify_code_;
 
   // @@protoc_insertion_point(copy_constructor:auth_request.RegisterRequest)
 }
@@ -561,11 +559,11 @@ PROTOBUF_NDEBUG_INLINE RegisterRequest::Impl_::Impl_(
       : _cached_size_{0},
         email_(arena),
         password_(arena),
-        re_password_(arena),
-        verify_code_(arena) {}
+        re_password_(arena) {}
 
 inline void RegisterRequest::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.verify_code_ = {};
 }
 RegisterRequest::~RegisterRequest() {
   // @@protoc_insertion_point(destructor:auth_request.RegisterRequest)
@@ -581,7 +579,6 @@ inline void RegisterRequest::SharedDtor(MessageLite& self) {
   this_._impl_.email_.Destroy();
   this_._impl_.password_.Destroy();
   this_._impl_.re_password_.Destroy();
-  this_._impl_.verify_code_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -628,7 +625,7 @@ RegisterRequest::GetClassData() const {
   return RegisterRequest_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 72, 2>
+const ::_pbi::TcParseTable<2, 4, 0, 61, 2>
 RegisterRequest::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(RegisterRequest, _impl_._has_bits_),
@@ -647,9 +644,9 @@ RegisterRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::auth_request::RegisterRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // string verify_code = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 3, 0,
+    // int32 verify_code = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RegisterRequest, _impl_.verify_code_), 3>(),
+     {32, 3, 0,
       PROTOBUF_FIELD_OFFSET(RegisterRequest, _impl_.verify_code_)}},
     // string email = 1;
     {::_pbi::TcParser::FastUS1,
@@ -672,17 +669,16 @@ RegisterRequest::_table_ = {
     {PROTOBUF_FIELD_OFFSET(RegisterRequest, _impl_.password_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string re_password = 3;
     {PROTOBUF_FIELD_OFFSET(RegisterRequest, _impl_.re_password_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string verify_code = 4;
-    {PROTOBUF_FIELD_OFFSET(RegisterRequest, _impl_.verify_code_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 verify_code = 4;
+    {PROTOBUF_FIELD_OFFSET(RegisterRequest, _impl_.verify_code_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\34\5\10\13\13\0\0\0"
+    "\34\5\10\13\0\0\0\0"
     "auth_request.RegisterRequest"
     "email"
     "password"
     "re_password"
-    "verify_code"
   }},
 };
 PROTOBUF_NOINLINE void RegisterRequest::Clear() {
@@ -693,7 +689,7 @@ PROTOBUF_NOINLINE void RegisterRequest::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       _impl_.email_.ClearNonDefaultToEmpty();
     }
@@ -703,10 +699,8 @@ PROTOBUF_NOINLINE void RegisterRequest::Clear() {
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       _impl_.re_password_.ClearNonDefaultToEmpty();
     }
-    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
-      _impl_.verify_code_.ClearNonDefaultToEmpty();
-    }
   }
+  _impl_.verify_code_ = 0;
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -760,13 +754,12 @@ PROTOBUF_NOINLINE void RegisterRequest::Clear() {
     }
   }
 
-  // string verify_code = 4;
+  // int32 verify_code = 4;
   if (CheckHasBit(cached_has_bits, 0x00000008U)) {
-    if (!this_._internal_verify_code().empty()) {
-      const ::std::string& _s = this_._internal_verify_code();
-      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "auth_request.RegisterRequest.verify_code");
-      target = stream->WriteStringMaybeAliased(4, _s, target);
+    if (this_._internal_verify_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<4>(
+              stream, this_._internal_verify_code(), target);
     }
   }
 
@@ -817,11 +810,11 @@ PROTOBUF_NOINLINE void RegisterRequest::Clear() {
                                         this_._internal_re_password());
       }
     }
-    // string verify_code = 4;
+    // int32 verify_code = 4;
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
-      if (!this_._internal_verify_code().empty()) {
-        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                        this_._internal_verify_code());
+      if (this_._internal_verify_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_verify_code());
       }
     }
   }
@@ -872,12 +865,8 @@ void RegisterRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
-      if (!from._internal_verify_code().empty()) {
-        _this->_internal_set_verify_code(from._internal_verify_code());
-      } else {
-        if (_this->_impl_.verify_code_.IsDefault()) {
-          _this->_internal_set_verify_code("");
-        }
+      if (from._internal_verify_code() != 0) {
+        _this->_impl_.verify_code_ = from._impl_.verify_code_;
       }
     }
   }
@@ -903,7 +892,7 @@ void RegisterRequest::InternalSwap(RegisterRequest* PROTOBUF_RESTRICT PROTOBUF_N
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, &other->_impl_.email_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, &other->_impl_.password_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.re_password_, &other->_impl_.re_password_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.verify_code_, &other->_impl_.verify_code_, arena);
+  swap(_impl_.verify_code_, other->_impl_.verify_code_);
 }
 
 ::google::protobuf::Metadata RegisterRequest::GetMetadata() const {

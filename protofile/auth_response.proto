@@ -10,13 +10,15 @@ message userData {
 
 message AuthResponse {
     int32 code = 1;
-    string message = 2;
+    string msg = 2;
     userData data = 3;
 }
 
 
 message CodeResponse{
-    
+    int32 code = 1;
+    int32 verify_code = 2;
+    string msg = 3;
 }
 
 

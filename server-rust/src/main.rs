@@ -1,5 +1,5 @@
 use bb8_redis::RedisConnectionManager;
-use server_rust::{AppState,Config,net::serve};
+use server_rust::{AppState,Config};
 use sqlx::sqlite::SqlitePoolOptions;
 use std::{env, sync::Arc};
 use dotenvy::dotenv;
@@ -26,14 +26,14 @@ async fn main() -> Result<()>{
     
     // 
     let pool = SqlitePoolOptions::new()
-        .max_connections(5)
+        .max_connections(3)
         .connect(&database_url)
         .await?;
 
-    let redisManager = RedisConnectionManager::new(redis_url.clone())?;
+    let redis_manage = RedisConnectionManager::new(redis_url.clone())?;
     let redis_pool = bb8::Pool::builder()
-        .max_size(15)
-        .build(redisManager)
+        .max_size(5)
+        .build(redis_manage)
         .await?;
 
     let state = AppState {
@@ -45,7 +45,7 @@ async fn main() -> Result<()>{
         redis_pool: redis_pool,
     };
 
-    println!("✅ 数据库与 Redis 初始化完成");
     server_rust::net::serve::serve(state).await?;
+    
     Ok(())
 }

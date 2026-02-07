@@ -15,7 +15,6 @@ LoginDialog::LoginDialog(QWidget* parent)
 	ui(new Ui::LoginDialog)
 {
 	ui->setupUi(this);
-	this->setStyleSheet(LoginDialogStyle::style);
 	initConnect();
 	initStyle();
 }
@@ -37,18 +36,49 @@ LoginDialog::~LoginDialog()
 /// </summary>
 void LoginDialog::onBtnLoginClicked()
 {
-	BaseRequest* request = new LoginRequest(ui->editUsername->text() , ui->editPassword->text());
-	NetManage::getInstance().sendRequest(request);
+	Net::BaseRequest* request = new Net::LoginRequest(
+		ui->editEmail->text() ,
+		ui->editPassword->text()
+	);
+	Net::NetManage::getInstance().sendRequest(request);
+}
+
+
+/// <summary>
+/// 26_2_7
+/// 发送验证码的逻辑
+/// </summary>
+void LoginDialog::onBtnSendCodeClicked()
+{
+	LOGD() << u8"发送效验码按钮点击";
+	Net::BaseRequest* req = new Net::EmailRequest(
+		ui->editRegEmail->text()
+	);
+	Net::NetManage::getInstance().sendRequest(req);
 }
 
 
 
 /// <summary>
+/// 26_2_7
 /// 创造账号的按钮的点击
+/// RegisterRequest(
+/// const QString& email,
+/// const QString& password,
+/// const QString& re_password,
+/// const qint32 verify_code
+/// );
 /// </summary>
 void LoginDialog::onBtnCreateClicked()
 {
+	Net::BaseRequest* request = new Net::RegisterRequest(
+		ui->editEmail->text(),
+		ui->editPassword->text(),
+		ui->editRegPassword->text(),
+		ui->editVerifyCode->text().toInt()
+	);
 
+	Net::NetManage::getInstance().sendRequest(request);
 }
 
 
@@ -59,7 +89,7 @@ void LoginDialog::onBtnCreateClicked()
 /// </summary>
 void LoginDialog::initStyle()
 {
-
+	this->setStyleSheet(LoginDialogStyle::style);
 }
 
 
@@ -84,5 +114,6 @@ void LoginDialog::initConnect()
 	});
 
 	connect(ui->btnLogin, &QPushButton::clicked, this, &LoginDialog::onBtnLoginClicked);
+	connect(ui->btnSendCode, &QPushButton::clicked, this, &LoginDialog::onBtnSendCodeClicked);
 }
 

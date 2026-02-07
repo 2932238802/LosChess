@@ -10,7 +10,7 @@ message RegisterRequest {
     string email = 1;
     string password = 2;
     string re_password = 3;
-    string verify_code = 4;
+    int32 verify_code = 4;
 }
 
 message EmailCodeRequest {

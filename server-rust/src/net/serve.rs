@@ -7,7 +7,15 @@ use tokio::net::TcpListener;
 use axum::routing::post;
 use axum::Router;
 
-use crate::controller::auth::lo_controller;
+use crate::
+    {
+        controller::auth::
+        {
+            lo_controller,
+            em_controller,
+            re_controller
+        },
+    };
 
 /**
  * 注册路由
@@ -15,9 +23,9 @@ use crate::controller::auth::lo_controller;
 pub async  fn api_router(ctx:AppState) -> Router
 {
     Router::new()
-        .route("api/auth/login", post(lo_controller))
-        // .route("api/auth/code", post())
-        // .route("api/auth/register", post())
+        .route("/api/auth/login", post(lo_controller))
+        .route("/api/auth/email", post(em_controller))
+        .route("/api/auth/register", post(re_controller))
         .layer( CorsLayer::new()
                 .allow_origin(Any)
                 .allow_methods(Any)

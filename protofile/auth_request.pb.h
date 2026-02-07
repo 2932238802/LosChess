@@ -270,19 +270,14 @@ class RegisterRequest final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_re_password();
 
   public:
-  // string verify_code = 4;
+  // int32 verify_code = 4;
   void clear_verify_code() ;
-  const ::std::string& verify_code() const;
-  template <typename Arg_ = const ::std::string&, typename... Args_>
-  void set_verify_code(Arg_&& arg, Args_... args);
-  ::std::string* PROTOBUF_NONNULL mutable_verify_code();
-  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_verify_code();
-  void set_allocated_verify_code(::std::string* PROTOBUF_NULLABLE value);
+  ::int32_t verify_code() const;
+  void set_verify_code(::int32_t value);
 
   private:
-  const ::std::string& _internal_verify_code() const;
-  PROTOBUF_ALWAYS_INLINE void _internal_set_verify_code(const ::std::string& value);
-  ::std::string* PROTOBUF_NONNULL _internal_mutable_verify_code();
+  ::int32_t _internal_verify_code() const;
+  void _internal_set_verify_code(::int32_t value);
 
   public:
   // @@protoc_insertion_point(class_scope:auth_request.RegisterRequest)
@@ -290,7 +285,7 @@ class RegisterRequest final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 4,
-                                   0, 72,
+                                   0, 61,
                                    2>
       _table_;
 
@@ -314,7 +309,7 @@ class RegisterRequest final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr email_;
     ::google::protobuf::internal::ArenaStringPtr password_;
     ::google::protobuf::internal::ArenaStringPtr re_password_;
-    ::google::protobuf::internal::ArenaStringPtr verify_code_;
+    ::int32_t verify_code_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1075,69 +1070,29 @@ inline void RegisterRequest::set_allocated_re_password(::std::string* PROTOBUF_N
   // @@protoc_insertion_point(field_set_allocated:auth_request.RegisterRequest.re_password)
 }
 
-// string verify_code = 4;
+// int32 verify_code = 4;
 inline void RegisterRequest::clear_verify_code() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.verify_code_.ClearToEmpty();
+  _impl_.verify_code_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
                   0x00000008U);
 }
-inline const ::std::string& RegisterRequest::verify_code() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::int32_t RegisterRequest::verify_code() const {
   // @@protoc_insertion_point(field_get:auth_request.RegisterRequest.verify_code)
   return _internal_verify_code();
 }
-template <typename Arg_, typename... Args_>
-PROTOBUF_ALWAYS_INLINE void RegisterRequest::set_verify_code(Arg_&& arg, Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
+inline void RegisterRequest::set_verify_code(::int32_t value) {
+  _internal_set_verify_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  _impl_.verify_code_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
   // @@protoc_insertion_point(field_set:auth_request.RegisterRequest.verify_code)
 }
-inline ::std::string* PROTOBUF_NONNULL RegisterRequest::mutable_verify_code()
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  ::std::string* _s = _internal_mutable_verify_code();
-  // @@protoc_insertion_point(field_mutable:auth_request.RegisterRequest.verify_code)
-  return _s;
-}
-inline const ::std::string& RegisterRequest::_internal_verify_code() const {
+inline ::int32_t RegisterRequest::_internal_verify_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.verify_code_.Get();
+  return _impl_.verify_code_;
 }
-inline void RegisterRequest::_internal_set_verify_code(const ::std::string& value) {
+inline void RegisterRequest::_internal_set_verify_code(::int32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.verify_code_.Set(value, GetArena());
-}
-inline ::std::string* PROTOBUF_NONNULL RegisterRequest::_internal_mutable_verify_code() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.verify_code_.Mutable( GetArena());
-}
-inline ::std::string* PROTOBUF_NULLABLE RegisterRequest::release_verify_code() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:auth_request.RegisterRequest.verify_code)
-  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
-    return nullptr;
-  }
-  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
-  auto* released = _impl_.verify_code_.Release();
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
-    _impl_.verify_code_.Set("", GetArena());
-  }
-  return released;
-}
-inline void RegisterRequest::set_allocated_verify_code(::std::string* PROTOBUF_NULLABLE value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
-  }
-  _impl_.verify_code_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.verify_code_.IsDefault()) {
-    _impl_.verify_code_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:auth_request.RegisterRequest.verify_code)
+  _impl_.verify_code_ = value;
 }
 
 // -------------------------------------------------------------------
