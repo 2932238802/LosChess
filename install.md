@@ -63,6 +63,7 @@ BoardGamePlatform/
     	"avatar" : "default.png",
     	"created_at" : "BJ 26_2_2:21:20",
     	"username" : "LosAngelous",
+        "role" : 1              // 1就是 管理员 2是普通
     }
 }
 {

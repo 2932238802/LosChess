@@ -5,6 +5,7 @@
 #include <QJsonDocument>
 #include <QUrl>
 #include <QObject>
+
 #include "constants.h"
 
 /// <summary>
@@ -13,14 +14,15 @@
 /// - 修正 用二进制流
 /// 
 /// </summary>
-class BaseRequest {
+class BaseRequest : public QObject {
 	Q_OBJECT
 
 public:
-
+	explicit BaseRequest(QObject* parent = nullptr) : QObject(parent) {}
 	virtual ~BaseRequest() = default;
 
 	// 这个要重写
+	// 虚表指针 + 虚表
 	virtual QString path() const = 0;
 	virtual QByteArray body() const = 0;
 	//virtual void handleResponse(const QJsonObject& json) = 0;
@@ -32,8 +34,14 @@ public:
 		return METHOD::Post;
 	}
 
-	QNetworkRequest buildRequest(const QString& baseUrl = "127.0.0.1:5000") const {
-		QUrl url(baseUrl);
+
+	/// <summary>
+	/// 26_2_4
+	/// 创建基础的请求
+	/// </summary>
+	/// <returns></returns>
+	QNetworkRequest buildRequest() const {
+		QUrl url(BASE_URL);
 
 		// 拼上 基础的 然后加上尾巴
 		QString basepath = url.path();

@@ -37,7 +37,8 @@ LoginDialog::~LoginDialog()
 /// </summary>
 void LoginDialog::onBtnLoginClicked()
 {
-
+	BaseRequest* request = new LoginRequest(ui->editUsername->text() , ui->editPassword->text());
+	NetManage::getInstance().sendRequest(request);
 }
 
 
@@ -47,6 +48,7 @@ void LoginDialog::onBtnLoginClicked()
 /// </summary>
 void LoginDialog::onBtnCreateClicked()
 {
+
 }
 
 
@@ -57,6 +59,7 @@ void LoginDialog::onBtnCreateClicked()
 /// </summary>
 void LoginDialog::initStyle()
 {
+
 }
 
 
@@ -80,8 +83,6 @@ void LoginDialog::initConnect()
 		ui->lblStatus->clear();
 	});
 
-	connect(ui->btnLogin, &QPushButton::clicked, this, [this]() {
-		
-	});
+	connect(ui->btnLogin, &QPushButton::clicked, this, &LoginDialog::onBtnLoginClicked);
 }
 

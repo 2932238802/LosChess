@@ -27,44 +27,34 @@ public:
 	/// 1. 修正 发送请求的逻辑
 	/// </summary>
 	/// <param name="req"></param>
-	void sendRequest(BaseRequest* req)
-	{
-		QNetworkRequest nreq;
+    void sendRequest(BaseRequest* req) {
+        if (!req) return;
 
-		nreq.setUrl(req->path());
-		nreq.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-protobuf");
-		QNetworkReply* reply;
+        QNetworkRequest nreq = req->buildRequest();
+        QNetworkReply* reply = LOS_net->post(nreq, req->body());
+        QPointer<BaseRequest> point(req);
 
-		reply = LOS_net->post(nreq, req->body());
+        connect(reply, &QNetworkReply::finished, this, [=]() {
+            reply->deleteLater();
 
-		QPointer<BaseRequest> point(req);
+            if (point.isNull()) return;
 
-		connect(reply, &QNetworkReply::finished, this, [=]() {
+            if (reply->error() != QNetworkReply::NoError) {
+                point->handleError(reply->errorString());
+            }
+            else {
+                point->handleResponse(reply->readAll());
+            }
+            point->deleteLater();
+        });
+    }
 
-			if (!point)
-			{
-				reply->deleteLater();
-				return;
-			}
-
-			if (reply->error() != QNetworkReply::NoError)
-			{
-				req->handleError(reply->errorString());
-			}
-			else {
-				// 没有问题
-				QByteArray resData = reply->readAll();
-				req->handleResponse(resData);
-			}
-
-			reply->deleteLater();
-		});
-	}
 
 private:
 	NetManage() { LOS_net = std::make_unique<QNetworkAccessManager>(); }
 	NetManage(const NetManage&) = delete;
 	NetManage(NetManage&&) = delete;
 	~NetManage() = default;
+
 	std::unique_ptr<QNetworkAccessManager> LOS_net;
 };

@@ -25,8 +25,8 @@ public:
 	QString path() const override;
 	QByteArray body() const override;
 
-	void handleResponse(const QByteArray& jsonBytes);
-	void handleError(const QString& error);
+	void handleResponse(const QByteArray& jsonBytes) override;
+	void handleError(const QString& error) override;
 
 private:
 	auth_request::LoginRequest LOS_request;
