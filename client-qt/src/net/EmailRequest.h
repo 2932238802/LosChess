@@ -3,6 +3,7 @@
 #include<QObject>
 #include"BaseRequest.h"
 #include"model/auth_request.pb.h"
+#include"common/logger.h"
 
 
 namespace Net {
@@ -17,7 +18,6 @@ namespace Net {
 	public:
 
 		EmailRequest(const QString& email);
-
 
 		QString path() const override;
 		QByteArray body() const override;

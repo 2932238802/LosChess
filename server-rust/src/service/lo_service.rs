@@ -37,12 +37,11 @@ pub async fn login_service(
     .fetch_optional(pool)
     .await
     .map_err(|e| {
-        println!("数据库查询失败: {:?}", e);
+        println!("Database query failed: {:?}", e);
         500u32 
     })?;
 
     let user = query_result.ok_or(404u32)?; // 如果是 None，直接返回 404
-
     let db_password: String = user.get("password");
     let is_valid = verify(&req.password, &db_password).map_err(|_| 500u32)?;
 

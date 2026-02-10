@@ -5,6 +5,7 @@
 
 #include "BaseRequest.h"
 #include "auth_request.pb.h"
+#include "logger.h"
 
 namespace Net {
 
@@ -25,7 +26,6 @@ public:
 
 	void handleResponse(const QByteArray& jsonBytes) override;
 	void handleError(const QString& error) override;
-
 
 private:
 

@@ -12,3 +12,5 @@ CREATE TABLE IF NOT EXISTS users (
 
 INSERT INTO users (email, password, username, role) 
 VALUES ('test@qq.com', '$2b$10$EixZ9dyJ9GsS6fKN5x.Cnu26798Jj89T95C6X.I6t6Q753uOnd7Ge', 'LosAngelous', 1);
+
+

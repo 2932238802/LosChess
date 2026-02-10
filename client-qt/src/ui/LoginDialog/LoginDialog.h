@@ -2,6 +2,7 @@
 #include<QDialog>
 #include<QWidget>
 #include<QPushButton>
+#include<QMessageBox>
 
 #include"net/LoginRequest.h"
 #include"net/RegisterRequest.h"
@@ -9,6 +10,7 @@
 #include"net/NetManage.h"
 #include"LoginDialog/LoginDialog_style.h"
 #include"common/logger.h"
+#include"common/AuthState.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -18,21 +20,22 @@ namespace Ui {
 QT_END_NAMESPACE
 
 /// <summary>
-/// 2_26_4
+/// 26_2_4
 /// ´´½¨µÇÂ¼ µ¯´°
+/// 
 /// 
 /// </summary>
 class LoginDialog : public QDialog{
 	Q_OBJECT
 
 public:
-	LoginDialog(QWidget* parent = nullptr);
+	LoginDialog(AuthState* state , QWidget* parent = nullptr);
 	~LoginDialog();
 
 private slots:
 	void onBtnLoginClicked();
 	void onBtnSendCodeClicked();
-	void onBtnCreateClicked();
+	void onBtnExecuteRegister();
 
 private:
 	void initStyle();
@@ -40,4 +43,5 @@ private:
 
 private:
 	Ui::LoginDialog* ui;
+	AuthState* LOS_state;
 };

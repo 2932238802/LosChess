@@ -3,8 +3,6 @@
 
 namespace Net {
 
-
-
     /// <summary>
     /// 26_2_2
     /// 默认构造
@@ -25,7 +23,6 @@ namespace Net {
     /// 
     /// 26_2_3 
     /// "/api/auth/login"
-    /// 
     /// 
     /// </summary>
     /// <returns></returns>
@@ -92,6 +89,7 @@ namespace Net {
             emit _loginFinished(false, QStringLiteral("reply parsing failed"), UserData());
             return;
         }
+
         //"code" : 401(密码错误) 404(用户不存在)  500(服务器错误)
         if (authResponse.code() != 200)
         {

@@ -150,23 +150,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_pwd_reg">
-         <property name="text">
-          <string>密码</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="editRegPassword">
-         <property name="echoMode">
-          <enum>QLineEdit::EchoMode::Password</enum>
-         </property>
-         <property name="placeholderText">
-          <string>输入密码......</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QWidget" name="confiemContain" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <property name="leftMargin">
@@ -184,7 +167,7 @@
           <item>
            <widget class="QLineEdit" name="editVerifyCode">
             <property name="echoMode">
-             <enum>QLineEdit::EchoMode::Password</enum>
+             <enum>QLineEdit::EchoMode::Normal</enum>
             </property>
             <property name="placeholderText">
              <string>输入邮箱验证码......</string>
@@ -199,6 +182,23 @@
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_pwd_reg">
+         <property name="text">
+          <string>密码</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="editRegPassword">
+         <property name="echoMode">
+          <enum>QLineEdit::EchoMode::Password</enum>
+         </property>
+         <property name="placeholderText">
+          <string>输入密码......</string>
+         </property>
         </widget>
        </item>
        <item>

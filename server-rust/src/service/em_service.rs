@@ -8,8 +8,8 @@ use lettre::{AsyncSmtpTransport, AsyncTransport, Message, Tokio1Executor, transp
 pub async fn em_service(to : &str,code :i32)
     -> anyhow::Result<()>
 {
-    let from = env::var("EMAIL").unwrap();
-    let pd = env::var("EMAIL_CODE").unwrap();
+    let from = env::var("EMAIL").context("Missing environment variable EMAIL")?;
+    let pd = env::var("EMAIL_CODE").context("Missing environment variable EMAIL_CODE")?;
     let smtp_path = "smtp.163.com";
 
     let msg = Message::builder()

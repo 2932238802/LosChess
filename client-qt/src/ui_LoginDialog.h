@@ -42,12 +42,12 @@ public:
     QVBoxLayout *registerLayout;
     QLabel *label_user_reg;
     QLineEdit *editRegEmail;
-    QLabel *label_pwd_reg;
-    QLineEdit *editRegPassword;
     QWidget *confiemContain;
     QHBoxLayout *horizontalLayout;
     QLineEdit *editVerifyCode;
     QPushButton *btnSendCode;
+    QLabel *label_pwd_reg;
+    QLineEdit *editRegPassword;
     QLineEdit *editRegConfirm;
     QPushButton *btnExecuteRegister;
     QPushButton *btnBackToLogin;
@@ -128,17 +128,6 @@ public:
 
         registerLayout->addWidget(editRegEmail);
 
-        label_pwd_reg = new QLabel(registerPage);
-        label_pwd_reg->setObjectName("label_pwd_reg");
-
-        registerLayout->addWidget(label_pwd_reg);
-
-        editRegPassword = new QLineEdit(registerPage);
-        editRegPassword->setObjectName("editRegPassword");
-        editRegPassword->setEchoMode(QLineEdit::EchoMode::Password);
-
-        registerLayout->addWidget(editRegPassword);
-
         confiemContain = new QWidget(registerPage);
         confiemContain->setObjectName("confiemContain");
         horizontalLayout = new QHBoxLayout(confiemContain);
@@ -146,7 +135,7 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         editVerifyCode = new QLineEdit(confiemContain);
         editVerifyCode->setObjectName("editVerifyCode");
-        editVerifyCode->setEchoMode(QLineEdit::EchoMode::Password);
+        editVerifyCode->setEchoMode(QLineEdit::EchoMode::Normal);
 
         horizontalLayout->addWidget(editVerifyCode);
 
@@ -157,6 +146,17 @@ public:
 
 
         registerLayout->addWidget(confiemContain);
+
+        label_pwd_reg = new QLabel(registerPage);
+        label_pwd_reg->setObjectName("label_pwd_reg");
+
+        registerLayout->addWidget(label_pwd_reg);
+
+        editRegPassword = new QLineEdit(registerPage);
+        editRegPassword->setObjectName("editRegPassword");
+        editRegPassword->setEchoMode(QLineEdit::EchoMode::Password);
+
+        registerLayout->addWidget(editRegPassword);
 
         editRegConfirm = new QLineEdit(registerPage);
         editRegConfirm->setObjectName("editRegConfirm");
@@ -204,10 +204,10 @@ public:
         btnSwitchToRegister->setText(QCoreApplication::translate("LoginDialog", "CREATE ACCOUNT", nullptr));
         label_user_reg->setText(QCoreApplication::translate("LoginDialog", "\351\202\256\347\256\261", nullptr));
         editRegEmail->setPlaceholderText(QCoreApplication::translate("LoginDialog", "\350\276\223\345\205\245\351\202\256\347\256\261......", nullptr));
-        label_pwd_reg->setText(QCoreApplication::translate("LoginDialog", "\345\257\206\347\240\201", nullptr));
-        editRegPassword->setPlaceholderText(QCoreApplication::translate("LoginDialog", "\350\276\223\345\205\245\345\257\206\347\240\201......", nullptr));
         editVerifyCode->setPlaceholderText(QCoreApplication::translate("LoginDialog", "\350\276\223\345\205\245\351\202\256\347\256\261\351\252\214\350\257\201\347\240\201......", nullptr));
         btnSendCode->setText(QCoreApplication::translate("LoginDialog", "\345\217\221\351\200\201\351\252\214\350\257\201\347\240\201", nullptr));
+        label_pwd_reg->setText(QCoreApplication::translate("LoginDialog", "\345\257\206\347\240\201", nullptr));
+        editRegPassword->setPlaceholderText(QCoreApplication::translate("LoginDialog", "\350\276\223\345\205\245\345\257\206\347\240\201......", nullptr));
         editRegConfirm->setPlaceholderText(QCoreApplication::translate("LoginDialog", "\345\206\215\346\254\241\350\276\223\345\205\245\345\257\206\347\240\201......", nullptr));
         btnExecuteRegister->setText(QCoreApplication::translate("LoginDialog", "REGISTER NOW", nullptr));
         btnBackToLogin->setText(QCoreApplication::translate("LoginDialog", "BACK TO LOGIN", nullptr));

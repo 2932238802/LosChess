@@ -4,7 +4,7 @@
 #include<QString>
 #include"model/auth_response.pb.h"
 
-const QString BASE_URL = u8"127.0.0.1:5000";
+const QString BASE_URL = u8"http://127.0.0.1:3000";
 
 
 // func 类
@@ -27,6 +27,7 @@ enum class METHOD {
 /// username 用户名称
 /// </summary>
 struct UserData {
+	QString user_id;
 	QString token;
 	QString avatar;
 	QString username;
@@ -35,6 +36,7 @@ struct UserData {
 	{
 		if (data.IsInitialized())
 		{
+			user_id = QString::fromStdString(data.user_id());
 			token = QString::fromStdString(data.token());
 			avatar = QString::fromStdString(data.avatar());
 			username = QString::fromStdString(data.username());

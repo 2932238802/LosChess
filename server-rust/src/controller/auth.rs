@@ -65,6 +65,7 @@ pub async  fn lo_controller(
             res.code = 200;
             res.msg = "登录成功".into();
             res.data = Some(UserData{
+                user_id : data.id.to_string(),
                 token: data.token,
                 username : data.username,
                 avatar : data.avatar,
@@ -122,7 +123,7 @@ pub async fn re_controller(
     let req = match RegisterRequest::decode(body) {
         Ok(r) => r,
         Err(_) => {
-            return (StatusCode::BAD_REQUEST, "无效的数据").into_response();
+            return (StatusCode::BAD_REQUEST, "Unvalid data").into_response();
         }
     };
 
@@ -131,8 +132,9 @@ pub async fn re_controller(
     match re_service::register_service(&state.pool, req).await {
         Ok(data) => {
             res.code = 200;
-            res.msg = "注册成功".into();
+            res.msg = "register success".into();
             res.data = Some(UserData {
+                user_id:data.id.to_string(),
                 token: data.token,
                 username: data.username,
                 avatar: data.avatar,
@@ -142,10 +144,10 @@ pub async fn re_controller(
         Err(code) => {
             res.code = code as i32;
             res.msg = match code {
-                409 => "邮箱已注册".into(),
-                400 => "错误的请求".into(),
-                500 => "内部服务器错误".into(),
-                _ => "未知错误".into(),
+                409 => "This email has already been registered".into(),
+                400 => "Bad Request".into(),
+                500 => "Internal Server Error".into(),
+                _ => "Unkown mistake".into(),
             };
             res.data = None;
         }
@@ -153,7 +155,7 @@ pub async fn re_controller(
 
     let mut buf = Vec::new();
     if res.encode(&mut buf).is_err() {
-        return (StatusCode::INTERNAL_SERVER_ERROR, "内部服务器错误").into_response();
+        return (StatusCode::INTERNAL_SERVER_ERROR, "Internal Server Error").into_response();
     }
 
     (
@@ -181,7 +183,7 @@ pub async fn em_controller(
         Err(_) =>{
             return (
                 StatusCode::BAD_REQUEST,
-                "请求解析错误"
+                "Request parsing error"
             ).into_response()
         }
     };
@@ -192,10 +194,11 @@ pub async fn em_controller(
     match em_service(&req.email,code).await {
         Ok(()) => {
             res.code = 200;
-            res.msg = "验证码发送成功".to_string();
+            res.msg = "Verification code sent successfully.".to_string();
             res.verify_code = code;
         }
-        Err(_) => {
+        Err(e) => {
+            eprintln!("{:#}",e);
             res.code = 500;
             res.msg = "Internal Server Error".to_string();
             res.verify_code = -1;

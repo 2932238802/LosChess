@@ -38,7 +38,11 @@ namespace Com {
 
 
 	/// <summary>
+	/// 2_7
 	/// 重新 写 handle 进行消息注册
+	/// 
+	/// 2_10
+	/// - 增加控制台 输出逻辑
 	/// </summary>
 	/// <param name="type"></param>
 	/// <param name="ctx"></param>
@@ -65,6 +69,7 @@ namespace Com {
 			line,
 			func,
 			utf8.constData());
+		qDebug() << "[" << file << "," << line << "] " << utf8.constData();
 		std::fflush(stderr);
 		if (type == QtFatalMsg) {
 			std::abort();
@@ -85,5 +90,4 @@ namespace Com {
 #define LOGI() QMessageLogger(__FILE__, __LINE__, Q_FUNC_INFO).info().noquote()
 #define LOGW() QMessageLogger(__FILE__, __LINE__, Q_FUNC_INFO).warning().noquote()
 #define LOGE() QMessageLogger(__FILE__, __LINE__, Q_FUNC_INFO).critical().noquote()
-
 };

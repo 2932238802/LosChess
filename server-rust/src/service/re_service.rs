@@ -54,7 +54,7 @@ pub async fn register_service(
         .bind(role)
         .fetch_one(pool).await
         .map_err(|e| {
-            eprintln!("插入用户失败: {e:?}");
+            eprintln!("Failed to insert user: {e:?}");
             500u32
         })?;
 

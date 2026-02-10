@@ -48,10 +48,7 @@ namespace Net {
 
 			// 拼上 基础的 然后加上尾巴
 			QString basepath = url.path();
-			if (!basepath.endsWith('/') && !basepath.startsWith('/'))
-			{
-				basepath += '/';
-			}
+			basepath += '/';
 
 			url.setPath(basepath + path());
 			QNetworkRequest request(url);

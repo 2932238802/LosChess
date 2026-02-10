@@ -45,7 +45,6 @@ pub async fn get_code_redis(
     email :&str
 ) -> Option<String>
 {
-
     let mut conn = state.redis_pool
         .get()
         .await

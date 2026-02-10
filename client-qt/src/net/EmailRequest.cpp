@@ -66,19 +66,23 @@ namespace Net {
 
         if (!codeResponse.ParseFromArray(jsonBytes.data(), jsonBytes.size()))
         {
+            LOGD() << "Reply parsing failed";
+
             emit _emailFinished(false, -1, "Reply parsing failed");
             return;
         }
 
         if (codeResponse.code() != 200)
         {
+            LOGD() << "codeResponse.msg() " << codeResponse.msg();
             emit _emailFinished(false, -1, QString::fromStdString(codeResponse.msg()));
             return;
         }
 
-        emit _emailFinished(true, codeResponse.code(), QStringLiteral("Verification code sent successfully!"));
-    }
+        LOGD() << "verify_codeÊÇ: " << codeResponse.verify_code();
 
+        emit _emailFinished(true, codeResponse.verify_code(), QStringLiteral("Verification code sent successfully!"));
+    }
 
 
 
@@ -104,6 +108,8 @@ namespace Net {
         else {
             msg = "netword error:" + error;
         }
+
+        LOGD() << msg;
         emit _emailFinished(false, -1, msg);
     }
 

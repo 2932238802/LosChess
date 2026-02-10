@@ -25,6 +25,11 @@ namespace Net {
         LOS_request.set_password(password.toStdString());
         LOS_request.set_re_password(re_password.toStdString());
         LOS_request.set_verify_code(static_cast<int>(verify_code));
+
+        LOGD() << "email: " << LOS_request.email();
+        LOGD() << "password: " << LOS_request.password();
+        LOGD() << "re_password: " << LOS_request.re_password();
+        LOGD() << "verify_code: " << LOS_request.verify_code();
     }
 
 
@@ -61,6 +66,7 @@ namespace Net {
     /// <summary>
     /// 26_2_27
     /// - 完成初始化
+    /// 
     /// </summary>
     /// <param name="jsonBytes"></param>
     void RegisterRequest::handleResponse(const QByteArray& jsonBytes)
@@ -73,9 +79,14 @@ namespace Net {
             emit _registerFinished(false, u8"Parsing response failed", UserData());
             return;
         }
+
+        LOGD() << "Received the registration reply";
+
         //"code" : 401(密码错误) 404(用户不存在)  500(服务器错误)
         if (authResponse.code() != 200)
         {
+            LOGD() << authResponse.msg();
+
             emit _registerFinished(false, QString::fromStdString(authResponse.msg()), UserData());
             return;
         }
@@ -97,10 +108,15 @@ namespace Net {
     /// <summary>
     /// 26_2_7
     /// 完成初始化
+    /// 
+    /// 26_2_8
+    /// 增加debug的逻辑
     /// </summary>
     /// <param name="error"></param>
     void RegisterRequest::handleError(const QString& error)
     {
+        LOGD() << "Bad Request received";
+
         QString msg;
         if (error.contains("refused")) {
             msg = QStringLiteral("failed to connect to the server. Check your network");

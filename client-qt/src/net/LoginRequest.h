@@ -11,9 +11,6 @@
 
 
 namespace Net {
-
-
-
 	/// <summary>
 	/// 26_2_2
 	/// µÇÂ¼µÄÇëÇó
@@ -25,12 +22,9 @@ namespace Net {
 		Q_OBJECT
 
 	public:
-
 		LoginRequest(const QString& email, const QString& password);
-
 		QString path() const override;
 		QByteArray body() const override;
-
 		void handleResponse(const QByteArray& jsonBytes) override;
 		void handleError(const QString& error) override;
 
@@ -42,6 +36,4 @@ namespace Net {
 		//void _loginSuc(const QString& messag e,UserData data);
 		void _loginFinished(bool isSuc, const QString& message, UserData data);
 	};
-
-
 }
